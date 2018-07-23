@@ -23,10 +23,11 @@ Create them if they do not exist.
 webscrape_wrapper.ps1 can be anywhere.  
 
 Download, install, run, login to docker for windows.  
+https://store.docker.com/editions/community/docker-ce-desktop-windows  
 In docker settings, share drives, check the box for C drive.  
-	This requires you to use an account with a password. (for some reason)   
-		If your account does not have a password you can create a new account and use its credentials.      
-		If you do this make sure that account has permisions to all the folders and files mentioned.  
+This requires you to use an account with a password. (for some reason)   
+If your account does not have a password you can create a new account and use its credentials.      
+If you do this make sure that account has permisions to all the folders and files mentioned.  
 
 ### Instructions
 
