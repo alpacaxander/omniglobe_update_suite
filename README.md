@@ -13,7 +13,7 @@ RT_Aerosols\
 NRL_Clouds_BlueMarble\  
 NRL_IR\  
 
-should be inside this folder:  
+Should be inside this folder:  
 C:\RT_Contents\  
 
 Create them if they do not exist.  
@@ -26,15 +26,14 @@ Download, install, run, login to docker for windows.
 In docker settings, share drives, check the box for C drive.  
 	This requires you to use an account with a password. (for some reason)   
 		If your account does not have a password you can create a new account and use its credentials.      
-		If you do this make sure that account has permisions to all the folders and files mentioned  
+		If you do this make sure that account has permisions to all the folders and files mentioned.  
 
 ### Instructions
 
 Open Powershell and type this command:  
 docker build -t cylc C:\cylc\webscrape\  
 
-Right click the webscrape_wrapper.ps1 and select "run with PowerShell"  
+Right click the webscrape_wrapper.ps1 and select "run with PowerShell".  
 The powershell window that opens can be closed.  
 
 Open any web browser and go to localhost:5800 to confirm it is working.  
-In order to stop the suite restart docker.
