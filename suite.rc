@@ -40,11 +40,10 @@
 			url = https://www.nrlmry.navy.mil/archdat/global/stitched/MoS_2/$CYLC_TASK_PARAM_mos_sub
 			NEW_DIR = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_mos_sub/.new
 			DESTINATION = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_mos_sub
-			SCRAPE = $CYLC_SUITE_DEF_PATH/bin/scrape.py
 	[[update<mos_sub>]]
 		inherit = update_model
         script = """
-            python $SCRAPE -p $processors \
+            scrape.py -p $processors \
 			--check_path $DESTINATION \
 			--output_path $NEW_DIR \
 			$url
@@ -57,12 +56,11 @@
 			NEW_DIR = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_navgem_sub/.new
 			OLD_DIR = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_navgem_sub/.old
 			DESTINATION = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_navgem_sub
-			SCRAPE = $CYLC_SUITE_DEF_PATH/bin/scrape.py
 	[[DOWNLOAD_NAVGEM]]
     [[download<navgem_sub>]]
 		inherit = DOWNLOAD_NAVGEM, replace_model
         script = """
-            python $SCRAPE -p $processors \
+            scrape.py -p $processors \
 			--replace \
 			--output_path $NEW_DIR \
 			$url/$CYLC_TASK_PARAM_navgem_sub/latest/ 
