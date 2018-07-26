@@ -16,8 +16,8 @@
 			graph = """
 				update<mos_sub>[-PT1H]:finish | update<mos_sub>[-PT1H]:expired => update<mos_sub>
 			"""
-        [[[T00,T12]]]
-            graph = """
+		[[[T00,T12]]]
+			graph = """
 				finished<navgem_sub>[-PT12H] => download<navgem_sub>
 				download<navgem_sub>         => move_old<navgem_sub>
 				move_old<navgem_sub>         => rename_new<navgem_sub>
@@ -34,16 +34,16 @@
 				download<navgem_sub>:expired | download<navgem_sub>:failed => !clean<navgem_sub>
 			"""
 [runtime]
-	[[update_model]]
+	[[update_mos]]
 		[[[environment]]]
 			processors = 4
 			url = https://www.nrlmry.navy.mil/archdat/global/stitched/MoS_2/$CYLC_TASK_PARAM_mos_sub
 			NEW_DIR = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_mos_sub/.new
 			DESTINATION = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_mos_sub
 	[[update<mos_sub>]]
-		inherit = update_model
-        script = """
-            scrape.py -p $processors \
+		inherit = update_mos
+		script = """
+			scrape.py -p $processors \
 			--check_path $DESTINATION \
 			--output_path $NEW_DIR \
 			$url
@@ -51,16 +51,16 @@
 		post-script = """
 			mv $NEW_DIR/*.jpg $DESTINATION || true
 		"""
-	[[replace_model]]
+	[[replace_navgem]]
 		[[[environment]]]
 			NEW_DIR = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_navgem_sub/.new
 			OLD_DIR = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_navgem_sub/.old
 			DESTINATION = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_navgem_sub
 	[[DOWNLOAD_NAVGEM]]
-    [[download<navgem_sub>]]
-		inherit = DOWNLOAD_NAVGEM, replace_model
-        script = """
-            scrape.py -p $processors \
+	[[download<navgem_sub>]]
+		inherit = DOWNLOAD_NAVGEM, replace_navgem
+        	script = """
+            		scrape.py -p $processors \
 			--replace \
 			--output_path $NEW_DIR \
 			$url/$CYLC_TASK_PARAM_navgem_sub/latest/ 
@@ -72,15 +72,15 @@
 			execution retry delays = 18*PT30M
 	[[MOVE_OLD_NAVGEM]]
 	[[move_old<navgem_sub>]]
-		inherit = MOVE_OLD_NAVGEM, replace_model
-        script = """
+		inherit = MOVE_OLD_NAVGEM, replace_navgem
+        	script = """
 			mkdir -p $OLD_DIR ; \
 			mv $DESTINATION/*.jpg $OLD_DIR || true
 		"""
 	[[RENAME_NEW_NAVGEM]]
 	[[rename_new<navgem_sub>]]
-		inherit = RENAME_NEW_NAVGEM, replace_model
-        script = """
+		inherit = RENAME_NEW_NAVGEM, replace_navgem
+        	script = """
 			cd $NEW_DIR
 			for file in *_*.jpg; do \
 				mv "$file" "${file%%_*}_${file##*_}" ; \
@@ -88,20 +88,20 @@
 		"""
 	[[MOVE_NEW_NAVGEM]]
 	[[move_new<navgem_sub>]]
-		inherit = MOVE_NEW_NAVGEM, replace_model
-        script = """
+		inherit = MOVE_NEW_NAVGEM, replace_navgem
+        	script = """
 			mv $NEW_DIR/*.jpg $DESTINATION
 		"""
 	[[RECOVER_OLD_NAVGEM]]
 	[[recover_old<navgem_sub>]]
-		inherit = RECOVER_OLD_NAVGEM, replace_model
-        script = """
+		inherit = RECOVER_OLD_NAVGEM, replace_navgem
+        	script = """
 			mv  $OLD_DIR/*.jpg $DESTINATION
 		"""
 	[[CLEAN_NAVGEM]]
 	[[clean<navgem_sub>]]
-		inherit = CLEAN_NAVGEM, replace_model
-        script = """
+		inherit = CLEAN_NAVGEM, replace_navgem
+        	script = """
 			if [[ -d $OLD_DIR ]]; then  \
 				rm $OLD_DIR/*.jpg || true ; \
 				rmdir $OLD_DIR ; \
@@ -113,4 +113,4 @@
 		"""
 	[[FINISHED_NAVGEM]]
 	[[finished<navgem_sub>]]
-		inherit = FINISHED_NAVGEM, replace_model
+		inherit = FINISHED_NAVGEM, replace_navgem
