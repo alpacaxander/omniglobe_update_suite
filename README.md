@@ -38,37 +38,35 @@ This is for specific use at NRL.
    1. Download, install, run [docker for windows](https://store.docker.com/editions/community/docker-ce-desktop-windows).  
    2. Login  
 
-    Once running it will prompt you for a login.  
-    If you do not have an account create one and [login](https://docs.docker.com/docker-id/ ).  
+     - Once running it will prompt you for a login.  
+     - If you do not have an account create one and [login](https://docs.docker.com/docker-id/ ).  
 
    3. Shared Drives  
 
-    On the windows toolbar, hidden icons, right click docker and select settings.  
-    Under shared drives, check the box for C drive.  
-    This will prompt you to login.  
-    
-    The username will be prefilled with {DOMAIN}/{USERNAME}  
-    This requires you to use an account with a password. (for some reason)  
-    If your account has a password then enter your password in the password box, select OK.  
-    
-    If your account does not have a password you need to create a new account with a password.  
-    Click the Windows icon.  
-    Select Settings.  
-    Click Accounts.  
-    Select Family & other users.  
-    Click "Add someone else to this PC."  
-    Select "I don't have this person's sign-in information."  
-    Select "Add a user without a Microsoft account."  
-    Enter a username, type the account's password twice, enter a clue and select Next.  
-    Once this user is set up go back and replace the {USERNAME} the username of the new account (keep {DOMAIN}).
-    Enter password, select OK.
+    - On the windows toolbar, hidden icons, right click docker and select settings.  
+    - Under shared drives, check the box for C drive.  
+    - This will prompt you to login.  
+    - The username will be prefilled with {DOMAIN}/{USERNAME}  
+    - This requires you to use an account with a password. (for some reason)  
+    **If your account has a password then enter your password in the password box, select OK.**  
+    **If your account does not have a password you need to create a new account with a password.**  
+      - Click the Windows icon.  
+      - Select Settings.  
+      - Click Accounts.  
+      - Select Family & other users.  
+      - Click "Add someone else to this PC."  
+      - Select "I don't have this person's sign-in information."  
+      - Select "Add a user without a Microsoft account."  
+      - Enter a username, type the account's password twice, enter a clue and select Next.  
+      - Once this user is set up go back and replace the {USERNAME} the username of the new account (keep {DOMAIN}).
+      - Enter password, select OK.  
 
    4. Build  
 
-    Click the Windows icon.  
-    Type Powershell, click on Windows Powershell.
-    Enter this command into the prompt:  
-    docker build -t cylc C:\cylc\webscrape\  
+    - Click the Windows icon.  
+    - Type Powershell, click on Windows Powershell.
+    - Enter this command into the prompt:  
+    - `docker build -t cylc C:\cylc\webscrape\`  
 
 ### Run
 
