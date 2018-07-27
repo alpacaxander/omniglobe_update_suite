@@ -4,11 +4,10 @@ This is for specific use at NRL.
 
 ### Get the files
 
-Click:  
-https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip  
-Right click zip file.
-Select Extract All.
-See below where to save files.
+ - [Click to download.](https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip)
+ - Right click zip file.
+ - Select Extract All.
+ - See below where to save files.
 
 ### Prerequisites (one time setup)
 
@@ -73,19 +72,19 @@ See below where to save files.
 
 ### Run
 
-Right click webscrape_wrapper.ps1 and select "run with PowerShell".  
-The powershell window that opens can be closed.  
-
-Open any web browser and go to localhost:5800 to confirm it is working.  
+ - Right click webscrape_wrapper.ps1 and select "run with PowerShell".  
+ - The powershell window that opens can be closed.  
+ - Open any web browser and go to localhost:5800 to confirm it is working.  
 
 ### Debugging
 
 On the windows toolbar, hidden icons, right click docker and select Restart.  
 Even if this does not solve the issue it is important to do this while debugging.  
 It is common for a container to "reserve" or otherwise restrict your container from using certain important resources.  
+Other issues can continuously cause this issue, so restart often while debugging.  
 
 Especially if you shared drives with a new accout, make sure that account has permisions to all the folders and files mentioned.  
-To do this Right click on C:\RT_Contents\.  
-Click "Give access to".  
-Select the username you created.  
-Select "Yes, share the items."  
+ - Right click on C:\RT_Contents\.  
+ - Click "Give access to".  
+ - Select the username you created.  
+ - Select "Yes, share the items."  
