@@ -40,8 +40,7 @@ See below where to save files.
    2. Login  
 
     Once running it will prompt you for a login.  
-    If you do not have an account create one and login.  
-    https://docs.docker.com/docker-id/  
+    If you do not have an account create one and [login](https://docs.docker.com/docker-id/ ).  
 
    3. Shared Drives  
 
