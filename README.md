@@ -38,7 +38,6 @@
    3. Login  
 
      - Once running it will prompt you for a login.  
-     - 
 
    4. Shared Drives  
 
