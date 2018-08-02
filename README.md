@@ -5,15 +5,16 @@
 1. Folder Locations
 
    These folders:  
-   RT_NRL_Wind_Waves\
-   RT_NRL_mslp\
-   RT_NRL_10m_winds\
-   RT_NRL_relvor\
-   RT_NRL_sol_rad\
-   RT_WaterVapor\
-   RT_Aerosols\
    NRL_Clouds_BlueMarble\
    NRL_IR\
+   RT_Aerosols\
+   RT_NRL_10m_winds\
+   RT_NRL_mslp\
+   RT_NRL_relvor\
+   RT_NRL_sol_rad\
+   RT_NRL_Wind_Waves\
+   RT_WaterVapor\
+
 
    Should be inside this folder:  
    C:\RT_Contents\
