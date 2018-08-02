@@ -28,8 +28,7 @@
  - [Go here to download.](https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip)
  - Right click zip file.
  - Select Extract All.
- - Put .py files, suite.rc, and Dockerfile in C:\cylc\webscrape\  
- - webscrape_wrapper.ps1 can be anywhere.  
+ - Put Bin folder, Dockerfile, Start Cylc.xml, suite.rc, webscrape_wrapper.ps1 in C:\cylc\webscrape\  
 
 3. Docker  
    1. If you do not have an account for docker, [create one](https://docs.docker.com/docker-id/ ).  
@@ -76,6 +75,17 @@
  - Right click webscrape_wrapper.ps1 and select "run with PowerShell".  
  - The powershell window that opens can be closed.  
  - Open any web browser and go to localhost:5800 to confirm it is working.  
+ 
+### Automatic scheduling
+
+ - Click Windows icon.
+ - type 'task scheduler'.
+ - select task scheduler
+ - select "Action".
+ - select "import task".
+ - go to C:\cylc\webscrape\
+ - select Start Cylc.xml
+ - select OK.
 
 ### Debugging
 
