@@ -18,6 +18,9 @@
    Should be inside this folder:  
    C:\RT_Contents\
 
+   And this path should exist:  
+   C:\cylc\webscrape\
+
    Create them if they do not exist.
 
 2. File Locations  
