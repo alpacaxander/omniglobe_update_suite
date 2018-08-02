@@ -33,13 +33,14 @@
    webscrape_wrapper.ps1 can be anywhere.  
 
 3. Docker  
-   1. Download, install, run [docker for windows](https://store.docker.com/editions/community/docker-ce-desktop-windows).  
-   2. Login  
+   1. If you do not have an account for docker [create one](https://docs.docker.com/docker-id/ ).  
+   2. Download, install, run [docker for windows](https://store.docker.com/editions/community/docker-ce-desktop-windows).  
+   3. Login  
 
      - Once running it will prompt you for a login.  
-     - If you do not have an account [create one and login](https://docs.docker.com/docker-id/ ).  
+     - 
 
-   3. Shared Drives  
+   4. Shared Drives  
 
     - On the windows toolbar, hidden icons, right click docker and select settings.  
     - Under shared drives, check the box for C drive.  
@@ -59,7 +60,7 @@
       - Once this user is set up go back and replace the {USERNAME} the username of the new account (keep {DOMAIN}).
       - Enter password, select OK.  
 
-   4. Build  
+   5. Build  
 
     - Click the Windows icon.  
     - Type Powershell, click on Windows Powershell.
