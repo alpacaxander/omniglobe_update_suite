@@ -1,36 +1,32 @@
 # omniglobe_update_suite
 
-### Get the files
-
- - [Click to download.](https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip)
- - Right click zip file.
- - Select Extract All.
- - See below where to save files.
-
 ### Prerequisites (one time setup)
 
 1. Folder Locations 
 
    These folders:  
-   RT_NRL_Wind_Waves\  
-   RT_NRL_mslp\  
-   RT_NRL_10m_winds\  
-   RT_NRL_relvor\  
-   RT_NRL_sol_rad\  
-   RT_WaterVapor\  
-   RT_Aerosols\  
-   NRL_Clouds_BlueMarble\  
-   NRL_IR\  
+ - RT_NRL_Wind_Waves\  
+ - RT_NRL_mslp\  
+ - RT_NRL_10m_winds\  
+ - RT_NRL_relvor\  
+ - RT_NRL_sol_rad\  
+ - RT_WaterVapor\  
+ - RT_Aerosols\  
+ - NRL_Clouds_BlueMarble\  
+ - NRL_IR\  
 
    Should be inside this folder:  
-   C:\RT_Contents\  
+ - C:\RT_Contents\  
 
    Create them if they do not exist.  
 
 2. File Locations  
 
-   .py files, suite.rc, and Dockerfile should be in C:\cylc\webscrape\  
-   webscrape_wrapper.ps1 can be anywhere.  
+ - [Go here to download.](https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip)
+ - Right click zip file.
+ - Select Extract All.
+ - Put .py files, suite.rc, and Dockerfile in C:\cylc\webscrape\  
+ - webscrape_wrapper.ps1 can be anywhere.  
 
 3. Docker  
    1. If you do not have an account for docker [create one](https://docs.docker.com/docker-id/ ).  
@@ -38,6 +34,8 @@
    3. Login  
 
      - Once running it will prompt you for a login.  
+     - You can login with your dockerid or the email you created your account with. Use your dockerid (otherwise it will cause issues later).   
+       - If you do not know your dockerid you can find it by logging onto [docker.com](docker.com) and looking in the top right.  
 
    4. Shared Drives  
 
