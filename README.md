@@ -1,7 +1,5 @@
 # omniglobe_update_suite
 
-This is for specific use at NRL.
-
 ### Get the files
 
  - [Click to download.](https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip)
@@ -29,7 +27,7 @@ This is for specific use at NRL.
 
    Create them if they do not exist.  
 
-2. File Location  
+2. File Locations  
 
    .py files, suite.rc, and Dockerfile should be in C:\cylc\webscrape\  
    webscrape_wrapper.ps1 can be anywhere.  
@@ -39,7 +37,7 @@ This is for specific use at NRL.
    2. Login  
 
      - Once running it will prompt you for a login.  
-     - If you do not have an account create one and [login](https://docs.docker.com/docker-id/ ).  
+     - If you do not have an account [create one and login](https://docs.docker.com/docker-id/ ).  
 
    3. Shared Drives  
 
@@ -86,3 +84,4 @@ Especially if you shared drives with a new accout, make sure that account has pe
  - Click "Give access to".  
  - Select the username you created.  
  - Select "Yes, share the items."  
+ - Repeat for C:\cylc\webscrape\
