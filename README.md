@@ -21,7 +21,7 @@
    And this path should exist:  
    C:\cylc\webscrape\
 
-   Create them if they do not exist.
+   Create these folders if they do not exist.
 
 2. File Locations  
 
@@ -32,15 +32,19 @@
  - webscrape_wrapper.ps1 can be anywhere.  
 
 3. Docker  
-   1. If you do not have an account for docker [create one](https://docs.docker.com/docker-id/ ).  
-   2. Download, install, run [docker for windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows).  
-   3. Login  
+   1. If you do not have an account for docker, [create one](https://docs.docker.com/docker-id/ ).  
+   2. Download/ install [docker for windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows).  
+   3. Run  
+     - After docker is installed, press the windows icon.
+     - Type 'docker'
+     - Select docker for windows
+   4. Login  
 
      - Once running it will prompt you for a login.  
      - You can login with your dockerid or the email you created your account with. Use your dockerid (otherwise it will cause issues later).   
        - If you do not know your dockerid you can find it by logging onto [docker.com](docker.com) and looking in the top right.  
 
-   4. Shared Drives  
+   5. Shared Drives  
 
     - On the windows toolbar, hidden icons, right click docker and select settings.  
     - Under shared drives, check the box for C drive.  
@@ -60,7 +64,7 @@
       - Once this user is set up go back and replace the {USERNAME} the username of the new account (keep {DOMAIN}).
       - Enter password, select OK.  
 
-   5. Build  
+   6. Build  
 
     - Click the Windows icon.  
     - Type Powershell, click on Windows Powershell.
@@ -79,6 +83,8 @@ On the windows toolbar, hidden icons, right click docker and select Restart.
 Even if this does not solve the issue it is important to do this while debugging.  
 It is common for a container to "reserve" or otherwise restrict your container from using certain important resources.  
 Other issues can continuously cause this issue, so restart often while debugging.  
+
+Resetting docker to factory defaults may help as well.
 
 Especially if you shared drives with a new accout, make sure that account has permisions to all the folders and files mentioned.  
  - Right click on C:\RT_Contents\.  
