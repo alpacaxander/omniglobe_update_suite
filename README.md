@@ -34,7 +34,7 @@
 
 3. Docker  
    1. If you do not have an account for docker [create one](https://docs.docker.com/docker-id/ ).  
-   2. Download, install, run [docker for windows](https://store.docker.com/editions/community/docker-ce-desktop-windows).  
+   2. Download, install, run [docker for windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows).  
    3. Login  
 
      - Once running it will prompt you for a login.  
