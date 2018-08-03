@@ -4,29 +4,31 @@
 
 1. Folder Locations
 
-   These folders:  
-   NRL_Clouds_BlueMarble\
-   NRL_IR\
-   RT_Aerosols\
-   RT_NRL_10m_winds\
-   RT_NRL_mslp\
-   RT_NRL_relvor\
-   RT_NRL_sol_rad\
-   RT_NRL_Wind_Waves\
-   RT_WaterVapor\
+   In Windows file explorer.
+   Go to 'This PC'.
+   Local Disk (C:)
+   This folder should exist: RT_Contents
+   With these folders inside of it:  
+   NRL_Clouds_BlueMarble
+   NRL_IR
+   RT_Aerosols
+   RT_NRL_10m_winds
+   RT_NRL_mslp
+   RT_NRL_relvor
+   RT_NRL_sol_rad
+   RT_NRL_Wind_Waves
+   RT_WaterVapor
 
-
-   Should be inside this folder:  
-   C:\RT_Contents\
-
-   And this path should exist:  
-   C:\cylc\webscrape\
+   Again in Local Disk (C:) this folder should exist:  
+   cylc
+   With this folder inside:
+   webscrape
 
    Create these folders if they do not exist.
 
 2. File Locations  
 
- - [Go here to download.](https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip)
+ - [Click here to download.](https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip)
  - Right click zip file.
  - Select Extract All.
  - Put Bin folder, Dockerfile, Start Cylc.xml, suite.rc, webscrape_wrapper.ps1 in C:\cylc\webscrape\  
