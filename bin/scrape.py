@@ -83,7 +83,7 @@ def scrape_zip(zip_url, args):
     response = requests.get(zip_url, stream=False, timeout=30)
     zip_file = BytesIO(response.content)
     zip_ref = zipfile.ZipFile(zip_file, 'r')
-    zip_ref.extractall(os.path.join(args.output_path, "zipoutput"))
+    zip_ref.extractall(args.output_path)
     zip_ref.close()
     print response.headers
 
