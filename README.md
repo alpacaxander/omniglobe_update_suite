@@ -4,27 +4,27 @@
 
 1. Folder Locations
 
-   In Windows file explorer.
-   Go to 'This PC'.
-   Local Disk (C:)
-   This folder should exist: RT_Contents
+   In Windows file explorer.  
+   Go to 'This PC'.  
+   Local Disk (C:)  
+   This folder should exist: RT_Contents  
    With these folders inside of it:  
-   NRL_Clouds_BlueMarble
-   NRL_IR
-   RT_Aerosols
-   RT_NRL_10m_winds
-   RT_NRL_mslp
-   RT_NRL_relvor
-   RT_NRL_sol_rad
-   RT_NRL_Wind_Waves
-   RT_WaterVapor
+   NRL_Clouds_BlueMarble  
+   NRL_IR  
+   RT_Aerosols  
+   RT_NRL_10m_winds  
+   RT_NRL_mslp  
+   RT_NRL_relvor  
+   RT_NRL_sol_rad  
+   RT_NRL_Wind_Waves  
+   RT_WaterVapor  
 
    Again in Local Disk (C:) this folder should exist:  
-   cylc
-   With this folder inside:
-   webscrape
+   cylc  
+   With this folder inside:  
+   webscrape  
 
-   Create these folders if they do not exist.
+   Create these folders if they do not exist.  
 
 2. File Locations  
 
