@@ -80,12 +80,9 @@ def recursive_get_latest(url):
     return result
 
 def scrape_zip(zip_url, args):
-    path_to_zip_file = os.path.join(args.output_path, "zipfile")
     response = requests.get(zip_url, stream=False, timeout=30)
     zip_file = BytesIO(response.content)
-    with open(path_to_zip_file, 'w') as f:
-        shutil.copyfileobj(zip_file, f)
-    zip_ref = zipfile.ZipFile(path_to_zip_file, 'r')
+    zip_ref = zipfile.ZipFile(zip_file, 'r')
     zip_ref.extractall(os.path.join(args.output_path, "zipoutput"))
     zip_ref.close()
     print response.headers
