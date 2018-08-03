@@ -9,6 +9,7 @@ import urllib2
 import ssl
 import requests
 import shutil
+import zipfile
 from io import BytesIO
 
 from BeautifulSoup import BeautifulSoup
@@ -20,7 +21,6 @@ def scrape_link(tuple, terminal=10):
     try:
         response = requests.get(url, stream=False, timeout=30)
         if response.headers['content-type'] != 'image/jpeg':
-            print response.headers['content-type']
             raise Exception('Not jpeg')
         image = BytesIO(
             response.content)
@@ -79,6 +79,17 @@ def recursive_get_latest(url):
             result.extend(recursive_get_latest(url + x))
     return result
 
+def scrape_zip(zip_url, args):
+    path_to_zip_file = os.path.join(args.output_path, "zipfile")
+    response = requests.get(zip_url, stream=False, timeout=30)
+    zip_file = BytesIO(response.content)
+    with open(path_to_zip_file, 'w') as f:
+        shutil.copyfileobj(zip_file, f)
+    zip_ref = zipfile.ZipFile(path_to_zip_file, 'r')
+    zip_ref.extractall(os.path.join(args.output_path, "zipoutput"))
+    zip_ref.close()
+    print response.headers
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('input', type=str,
@@ -95,6 +106,8 @@ def main():
         help='If set will recursively search link')
     parser.add_argument('--replace', nargs='?', const=True, default=False,
         help='If set will not check for duplicates')
+    parser.add_argument('--zip', nargs='?', const=True, default=False,
+        help='If set will download url and unzip to output_path')
     args = parser.parse_args()
 
     if args.verbose == None:
@@ -108,6 +121,10 @@ def main():
 
     if not os.path.exists(args.output_path):
         os.makedirs(args.output_path)
+
+    if args.zip:
+        scrape_zip(args.input, args)
+        return
 
     if args.recursive:
         latest = recursive_get_latest(args.input)
