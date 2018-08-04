@@ -85,7 +85,6 @@ def scrape_zip(zip_url, args):
     zip_ref = zipfile.ZipFile(zip_file, 'r')
     zip_ref.extractall(args.output_path)
     zip_ref.close()
-    print response.headers
 
 def main():
     parser = argparse.ArgumentParser()
@@ -103,8 +102,8 @@ def main():
         help='If set will recursively search link')
     parser.add_argument('--replace', nargs='?', const=True, default=False,
         help='If set will not check for duplicates')
-    parser.add_argument('--zip', nargs='?', const=True, default=False,
-        help='If set will download url and unzip to output_path')
+    parser.add_argument('--unzip', nargs='?', const=True, default=False,
+        help='If set will download url and extract all to output_path')
     args = parser.parse_args()
 
     if args.verbose == None:
@@ -119,7 +118,7 @@ def main():
     if not os.path.exists(args.output_path):
         os.makedirs(args.output_path)
 
-    if args.zip:
+    if args.unzip:
         scrape_zip(args.input, args)
         return
 
