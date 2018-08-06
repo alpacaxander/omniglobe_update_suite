@@ -11,12 +11,18 @@ from BeautifulSoup import BeautifulSoup
 
 LOG = logging.getLogger(__name__)
 
-def scrape_zip(zip_url, output_path):
-    response = requests.get(zip_url, stream=False, timeout=30)
-    zip_file = BytesIO(response.content)
-    zip_ref = zipfile.ZipFile(zip_file, 'r')
-    zip_ref.extractall(output_path)
-    zip_ref.close()
+def scrape_zip(zip_url, output_path, retry=10):
+    try:
+        response = requests.get(zip_url, stream=False, timeout=30)
+        zip_file = BytesIO(response.content)
+        zip_ref = zipfile.ZipFile(zip_file, 'r')
+        zip_ref.extractall(output_path)
+        zip_ref.close()
+    except Exception, e:
+        if retry is 0:
+            raise e
+        else:
+            scrape_zip(zip_url, output_path, retry=retry-1)
 
 def main():
     parser = argparse.ArgumentParser()
@@ -24,7 +30,7 @@ def main():
         help='Starting url')
     parser.add_argument('-v', '--verbose', action='count',
         help='Print more info')
-    parser.add_argument('-o', '--output_path', type=str, default='', nargs='?',
+    parser.add_argument('-o', '--output_path', type=str, default='./', nargs='?',
         help='Path to output directory')
     args = parser.parse_args()
 
