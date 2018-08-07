@@ -44,7 +44,7 @@
    3. Run  
      - After docker is installed, press the Windows icon/ Start Menu or the Search Windows button in the bottom left.
      - Type 'docker'
-     - Select "Docker for Windows"
+     - Select "Docker for Windows" (it may take a moment to start up)
    4. Login  
      - Once running it will prompt you for a login.  
        - If there is no promt go to Windows hidden icons. This is in the bottom right on the task bar. Near your time/date there is an icon that looks like a caret(^) clicking this will reveal a few hidden icons.  
