@@ -42,20 +42,23 @@
          If this does not pop up then find the download in the download folder, right click, and select run.
      - There will be a popup that asks if you want to allow docker to make changes to your device, select yes.
    3. Run  
-     - After docker is installed, press the windows icon/ start menu or the search windows button in the bottom left.
+     - After docker is installed, press the Windows icon/ Start Menu or the Search Windows button in the bottom left.
      - Type 'docker'
      - Select "Docker for Windows"
    4. Login  
      - Once running it will prompt you for a login.  
+       - If there is no promt go to Windows hidden icons. This is in the bottom right on the task bar. There should be your time/date, then an icon for volume and internet, then an icon that looks like a caret(^) clicking this will reveal a few hidden icons.  
+       - There will be the docker logo of a whale with squares on its back. If this logo is not there then repeat step 3, Run.  
+       - Right click the icon and select sign in.  
      - You can login with your dockerid or the email you created your account with. Use your dockerid (otherwise it will cause issues later).   
-       - If you do not know your dockerid you can find it by logging onto [docker.com](docker.com) and looking in the top right.  
+       - If you do not know your dockerid you can find it by logging onto [docker.com](https://www.docker.com/) and looking in the top right you should see a dropdown menu with your Docker id on it.  
 
    5. Shared Drives  
 
-    - On the windows toolbar, hidden icons, right click docker and select settings.  
+    - On the windows toolbar, hidden icons (refer to step 4 for how to find hidden icons), right click docker and select settings.  
     - Under shared drives, check the box for C drive.  
-    - This will prompt you to login.  
-    - The username will be prefilled with {DOMAIN}/{USERNAME}  
+    - This will prompt you to login to the mechine as an admin.  
+    - The username will be prefilled with {DOMAIN}/{USERNAME} (for example 'adomain-1234/alexander')  
     - This requires you to use an account with a password. (for some reason)  
     **If your account has a password then enter your password in the password box, select OK.**  
     **If your account does not have a password you need to create a new account with a password.**  
@@ -72,7 +75,7 @@
 
    6. Build  
 
-    - Click the Windows icon.  
+    - press the Windows icon/ Start Menu or the Search Windows button in the bottom left.  
     - Type Powershell, click on Windows Powershell.
     - Enter this command into the prompt:  
     - `docker build -t cylc C:\cylc\webscrape\`  
