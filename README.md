@@ -38,8 +38,11 @@
      - [Click here](https://store.docker.com/editions/community/docker-ce-desktop-windows).  
      - Select "Please login to download"
      - After loging in, scroll down and select "Get Docker CE for Windows (stable)"
+     - On most browsers an option will pop up asking if you want to run/open/cancel. Select run.
+         If this does not pop up then find the download in the download folder, right click, and select run.
+     - There will be a popup that asks if you want to allow docker to make changes to your device, select yes.
    3. Run  
-     - After docker is installed, press the windows icon/ start menu/ or the search windows button in the bottom left.
+     - After docker is installed, press the windows icon/ start menu or the search windows button in the bottom left.
      - Type 'docker'
      - Select "Docker for Windows"
    4. Login  
