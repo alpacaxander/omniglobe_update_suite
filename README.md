@@ -47,7 +47,7 @@
      - Select "Docker for Windows"
    4. Login  
      - Once running it will prompt you for a login.  
-       - If there is no promt go to Windows hidden icons. This is in the bottom right on the task bar. There should be your time/date, then an icon for volume and internet, then an icon that looks like a caret(^) clicking this will reveal a few hidden icons.  
+       - If there is no promt go to Windows hidden icons. This is in the bottom right on the task bar. Near your time/date there is an icon that looks like a caret(^) clicking this will reveal a few hidden icons.  
        - There will be the docker logo of a whale with squares on its back. If this logo is not there then repeat step 3, Run.  
        - Right click the icon and select sign in.  
      - You can login with your dockerid or the email you created your account with. Use your dockerid (otherwise it will cause issues later).   
@@ -70,7 +70,8 @@
       - Select "I don't have this person's sign-in information."  
       - Select "Add a user without a Microsoft account."  
       - Enter a username, type the account's password twice, enter a clue and select Next.  
-      - Once this user is set up go back and replace the {USERNAME} the username of the new account (keep {DOMAIN}).
+      - Login into the user so Windows can do its initial setup.  
+      - Once this user is set up go back and replace the {USERNAME} with the username of the new account (keep {DOMAIN}).
       - Enter password, select OK.  
 
    6. Build  
