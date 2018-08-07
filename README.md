@@ -27,21 +27,22 @@
    Create these folders if they do not exist.  
 
 2. File Locations  
-
  - [Click here to download.](https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip)
  - Right click zip file.
  - Select Extract All.
  - Put Bin folder, Dockerfile, Start Cylc.xml, suite.rc, webscrape_wrapper.ps1 in C:\cylc\webscrape\  
-
+ **NOTE: Windows doesn't need you to extract the zip. As long as the files are in C:\cylc\webscrape\ this step is fulfilled**
 3. Docker  
    1. If you do not have an account for docker, [create one](https://docs.docker.com/docker-id/ ).  
-   2. Download/ install [docker for windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows).  
+   2. Download/ install docker
+     - [Click here](https://store.docker.com/editions/community/docker-ce-desktop-windows).  
+     - Select "Please login to download"
+     - After loging in, scroll down and select "Get Docker CE for Windows (stable)"
    3. Run  
-     - After docker is installed, press the windows icon.
+     - After docker is installed, press the windows icon/ start menu/ or the search windows button in the bottom left.
      - Type 'docker'
-     - Select docker for windows
+     - Select "Docker for Windows"
    4. Login  
-
      - Once running it will prompt you for a login.  
      - You can login with your dockerid or the email you created your account with. Use your dockerid (otherwise it will cause issues later).   
        - If you do not know your dockerid you can find it by logging onto [docker.com](docker.com) and looking in the top right.  
