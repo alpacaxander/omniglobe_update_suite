@@ -26,13 +26,15 @@ This app is a one time setup to keep specific folders up to date with NRL images
       - If you do not know your dockerid you can find it by logging onto [docker.com](https://www.docker.com/) and looking in the top right you should see a dropdown menu with your Docker id as the label.  
 
 5. Shared Drives  
+
 **If the user account on Windows has a password**  
    1. On the windows toolbar, hidden icons (refer to step 4 for how to find hidden icons), right click docker and select settings.  
    2. Click shared drives
    3. Check the box for C drive.  
    4. This will prompt you to login to the mechine as an admin.  
    5. The username will be prefilled with {DOMAIN}/{USERNAME} (for example 'adomain-1234/alexander')  
-   6. Enter your password into the password box then hit OK.
+   6. Enter your password into the password box then hit OK.  
+   
 **If your account does not have a password you need to create a new account with a password.**  
    1. Click the Windows icon.  
    2. Select Settings.  
