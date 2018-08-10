@@ -60,9 +60,10 @@ This app is a one time setup to keep specific folders up to date with NRL images
 
 ### Run
  1. [Click here to download.](https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip)
- **NOTE: Windows doesn't need you to extract the zip file. As long as step 4 is fulfilled**
+ **NOTE: Windows doesn't need you to extract the zip file. As long as step 4+ is fulfilled**
  2. Right click zip file.
  3. Select Extract All.
+ 4. Move the files and bin to C:\cylc\webscrape\ (create these folders if necessary)
  4. Right click webscrape_wrapper.ps1 and select "run with PowerShell" (if this is not an option select open).  
  5. Open any web browser and go to localhost:5800 to confirm it is working.  
  
