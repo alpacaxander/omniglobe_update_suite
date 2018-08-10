@@ -1,5 +1,7 @@
 # omniglobe_update_suite
 
+This app is a one time setup to keep specific folders up to date with NRL images.
+
 ## Prerequisites (one time setup)
 
 ### Docker  
@@ -7,9 +9,9 @@
 2. Download/ install docker
    1. [Click here](https://store.docker.com/editions/community/docker-ce-desktop-windows).  
    2. Select "Please login to download"
-   3. After loging in, scroll down and select "Get Docker CE for Windows (stable)"
+   3. After loging in, scroll down and select "Get Docker CE for Windows (stable)" (the download may take some time)
    4. On most browsers an option will pop up asking if you want to run/open/cancel. Select run.
-      If this does not pop up then find the download in the download folder, right click, and select run.
+      If this does not pop up then find the download in your download folder, right click, and select run.
    5. There will be a popup that asks if you want to allow docker to make changes to your device, select yes.
 3. Run  
    1. After docker is installed, press the Windows icon/ Start Menu or the Search Windows button in the bottom left.
@@ -17,16 +19,16 @@
    3. Select "Docker for Windows" (it may take a moment to start up)
 4. Login  
    1. Once running it will prompt you for a login.  
-      - If there is no promt go to Windows hidden icons. This is in the bottom right on the task bar. Near your time/date there is an icon that looks like a caret(^) clicking this will reveal a few hidden icons.  
+      - **If there is no prompt** go to Windows hidden icons. This is in the bottom right on the task bar. Near your time/date there is an icon that looks like a caret(^) clicking this will reveal a few hidden icons.  
       - There will be the docker logo of a whale with squares on its back. If this logo is not there then repeat step 3, Run.  
       - Right click the icon and select sign in (this may look different than the origional prompt).  
    2. You can login with your dockerid or the email you created your account with. Use your dockerid (otherwise it will cause issues later).   
-      - If you do not know your dockerid you can find it by logging onto [docker.com](https://www.docker.com/) and looking in the top right you should see a dropdown menu with your Docker id on it.  
+      - If you do not know your dockerid you can find it by logging onto [docker.com](https://www.docker.com/) and looking in the top right you should see a dropdown menu with your Docker id as the label.  
 
 5. Shared Drives  
  **If the user account on Windows has a password**  
    1. On the windows toolbar, hidden icons (refer to step 4 for how to find hidden icons), right click docker and select settings.  
-   2. Select shared drives
+   2. Click shared drives
    3. Check the box for C drive.  
    4. This will prompt you to login to the mechine as an admin.  
    5. The username will be prefilled with {DOMAIN}/{USERNAME} (for example 'adomain-1234/alexander')  
@@ -58,13 +60,11 @@
 
 ### Run
  1. [Click here to download.](https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip)
+ **NOTE: Windows doesn't need you to extract the zip file. As long as step 4 is fulfilled**
  2. Right click zip file.
  3. Select Extract All.
- 4. Put Bin folder, Dockerfile, Start Cylc.xml, suite.rc, webscrape_wrapper.ps1 in C:\cylc\webscrape\  
- **NOTE: Windows doesn't need you to extract the zip. As long as the files are in C:\cylc\webscrape\ this step is fulfilled**
- 5. Right click webscrape_wrapper.ps1 (from the beginning) and select "run with PowerShell" (if this is not an option select open).  
- 6. The powershell window that opens can be closed.  
- 7. Open any web browser and go to localhost:5800 to confirm it is working.  
+ 4. Right click webscrape_wrapper.ps1 and select "run with PowerShell" (if this is not an option select open).  
+ 5. Open any web browser and go to localhost:5800 to confirm it is working.  
  
 ### Automatic scheduling
 
@@ -77,7 +77,7 @@
  7. select Start Cylc.xml
  8. select OK.
 
-### Debugging
+## Debugging
 
 Make sure the folders are currect from step one.
 
