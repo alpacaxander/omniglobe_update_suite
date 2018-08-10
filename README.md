@@ -34,7 +34,7 @@ This app is a one time setup to keep specific folders up to date with NRL images
    4. This will prompt you to login to the mechine as an admin.  
    5. The username will be prefilled with {DOMAIN}/{USERNAME} (for example 'adomain-1234/alexander')  
    6. Enter your password into the password box then hit OK.  
-   
+
    **If your account does not have a password you need to create a new account with a password.**  
    1. Click the Windows icon.  
    2. Select Settings.  
