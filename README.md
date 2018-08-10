@@ -60,7 +60,7 @@ This app is a one time setup to keep specific folders up to date with NRL images
 
 ### Run
  1. [Click here to download.](https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip)
- **NOTE: Windows doesn't need you to extract the zip file. As long as step 4+ is fulfilled**
+ **NOTE: Windows doesn't need you to extract the zip file. As long as steps 4+ is fulfilled**
  2. Right click zip file.
  3. Select Extract All.
  4. Move the files and bin to C:\cylc\webscrape\ (create these folders if necessary)
@@ -74,7 +74,7 @@ This app is a one time setup to keep specific folders up to date with NRL images
  3. select task scheduler
  4. select "Action" at the top left.
  5. select "import task".
- 6. go to C:\cylc\webscrape\
+ 6. Navigate to C:\cylc\webscrape\
  7. select Start Cylc.xml
  8. select OK.
 
