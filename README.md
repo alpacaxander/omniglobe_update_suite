@@ -71,7 +71,7 @@ This app is a one time setup to keep specific folders up to date with NRL images
  1. Click Windows icon.
  2. type 'task scheduler'.
  3. select task scheduler
- 4. select "Action".
+ 4. select "Action" at the top left.
  5. select "import task".
  6. go to C:\cylc\webscrape\
  7. select Start Cylc.xml
