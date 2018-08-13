@@ -4,6 +4,14 @@ This app is a one time setup to keep specific folders up to date with NRL images
 
 ## Prerequisites (one time setup)
 
+### File Locations
+
+1. [Click here to download.](https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip)  
+**NOTE: Windows doesn't need you to extract the zip file. As long as step 4 is fulfilled**
+2. Right click zip file.
+3. Select Extract All.
+4. Move bin, Dockerfile, Start Cylc.xml, suite.rc, and webscrape_wrapper.ps1 to C:\cylc\webscrape\ (create these folders if necessary)
+
 ### Docker  
 1. If you do not have an account for docker, [create one](https://docs.docker.com/docker-id/ ).  
 2. Download/ install docker
@@ -61,13 +69,9 @@ This app is a one time setup to keep specific folders up to date with NRL images
       `docker build -t cylc C:\cylc\webscrape\`  
 
 ### Run
- 1. [Click here to download.](https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip)  
- **NOTE: Windows doesn't need you to extract the zip file. As long as steps 4+ are fulfilled**
- 2. Right click zip file.
- 3. Select Extract All.
- 4. Move the files and bin to C:\cylc\webscrape\ (create these folders if necessary)
- 4. Right click webscrape_wrapper.ps1 and select "run with PowerShell" (if this is not an option select open).  
- 5. Open any web browser and go to localhost:5800 to confirm it is working.  
+
+ 1. Right click webscrape_wrapper.ps1 and select "run with PowerShell" (if this is not an option select open).
+ 2. Open any web browser and go to `localhost:5800` to confirm it is working.  
  
 ### Automatic scheduling
 
