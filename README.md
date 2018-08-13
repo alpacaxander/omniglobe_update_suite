@@ -61,7 +61,7 @@ This app is a one time setup to keep specific folders up to date with NRL images
       `docker build -t cylc C:\cylc\webscrape\`  
 
 ### Run
- 1. [Click here to download.](https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip)
+ 1. [Click here to download.](https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip)  
  **NOTE: Windows doesn't need you to extract the zip file. As long as steps 4+ are fulfilled**
  2. Right click zip file.
  3. Select Extract All.
