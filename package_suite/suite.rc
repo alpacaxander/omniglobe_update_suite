@@ -7,6 +7,10 @@
         replace = polar_pair, polar_streams, 10m_winds, mslp, relvor, sol_rad, wind_waves
 		navgem_latest = 10m_winds, mslp, relvor, sol_rad, wind_waves
         10m_zip = polar_pair, polar_streams
+    [[parameter templates]]
+        replace = _%(replace)s
+        navgem_latest = _%(navgem_latest)s
+        10m_zip = _%(10m_zip)s
 
 [scheduling]
     initial cycle point = 20180709T00
@@ -45,6 +49,10 @@
 			DESTINATION = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_mos_sub
 	[[update<mos_sub>]]
 		inherit = update_mos
+        pre-script = """
+            mkdir -p $DESTINATION ; \
+            mkdir -p $NEW_DIR
+        """
 		script = """
 			scrape.py -p $processors \
 			--check_path $DESTINATION \
@@ -61,6 +69,9 @@
     [[DOWNLOAD_NAVGEM]]
 	[[download<navgem_latest>]]
 		inherit = DOWNLOAD_NAVGEM, replace_navgem
+            pre-script = """
+                mkdir -p $NEW_DIR
+            """
         	script = """
             	scrape.py -p $processors \
 			    --replace \
