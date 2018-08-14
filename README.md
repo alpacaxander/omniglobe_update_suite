@@ -1,96 +1,92 @@
 # omniglobe_update_suite
 
-### Prerequisites (one time setup)
+This app is a one time setup to keep specific folders up to date with NRL images.
 
-1. Folder Locations
+## Prerequisites (one time setup)
 
-   In Windows file explorer.  
-   Go to 'This PC'.  
-   Local Disk (C:)  
-   This folder should exist: RT_Contents  
-   With these folders inside of it:  
-   NRL_Clouds_BlueMarble  
-   NRL_IR  
-   RT_Aerosols  
-   RT_NRL_10m_winds  
-   RT_NRL_mslp  
-   RT_NRL_relvor  
-   RT_NRL_sol_rad  
-   RT_NRL_Wind_Waves  
-   RT_WaterVapor  
+### File Locations
 
-   Again in Local Disk (C:) this folder should exist:  
-   cylc  
-   With this folder inside:  
-   webscrape  
+1. [Click here to download.](https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip)  
+**NOTE: Windows doesn't need you to extract the zip file. As long as step 4 is fulfilled**
+2. Right click zip file.
+3. Select Extract All.
+4. Move bin, Dockerfile, Start Cylc.xml, suite.rc, and webscrape_wrapper.ps1 to C:\cylc\webscrape\ (create these folders if necessary)
 
-   Create these folders if they do not exist.  
+### Docker  
+1. If you do not have an account for docker, [create one](https://docs.docker.com/docker-id/ ).  
+2. Download/ install docker
+   1. [Click here](https://store.docker.com/editions/community/docker-ce-desktop-windows).  
+   2. Select "Please login to download"
+   3. After loging in, scroll down and select "Get Docker CE for Windows (stable)" (the download may take some time)
+   4. On most browsers an option will pop up asking if you want to run/open/cancel. Select run.
+      If this does not pop up then find the download in your download folder, right click, and select run.
+   5. There will be a popup that asks if you want to allow docker to make changes to your device, select yes.
+3. Run  
+   1. After docker is installed, press the Windows icon/ Start Menu or the Search Windows button in the bottom left.
+   2. Type 'docker'
+   3. Select "Docker for Windows" (it may take a moment to start up)
+4. Login  
+   1. Once running it will prompt you for a login.  
+      - **If there is no prompt** go to Windows hidden icons. This is in the bottom right on the task bar. Near your time/date there is an icon that looks like a caret(^) clicking this will reveal a few hidden icons.  
+      - There will be the docker logo of a whale with squares on its back. If this logo is not there then repeat step 3, Run.  
+      - Right click the icon and select sign in (this may look different than the origional prompt).  
+   2. You can login with your dockerid or the email you created your account with. Use your dockerid (otherwise it will cause issues later).   
+      - If you do not know your dockerid you can find it by logging onto [docker.com](https://www.docker.com/) and looking in the top right you should see a dropdown menu with your Docker id as the label.  
 
-2. File Locations  
+5. Shared Drives  
 
- - [Click here to download.](https://github.com/alpacaxander/omniglobe_update_suite/archive/master.zip)
- - Right click zip file.
- - Select Extract All.
- - Put Bin folder, Dockerfile, Start Cylc.xml, suite.rc, webscrape_wrapper.ps1 in C:\cylc\webscrape\  
+   **If the user account on Windows has a password**  
+   1. On the windows toolbar, hidden icons (refer to step 4 for how to find hidden icons), right click docker and select settings.  
+   2. Click shared drives
+   3. Check the box for C drive.  
+   4. This will prompt you to login to the mechine as an admin.  
+   5. The username will be prefilled with {DOMAIN}/{USERNAME} (for example 'adomain-1234/alexander')  
+   6. Enter your password into the password box then hit OK.  
 
-3. Docker  
-   1. If you do not have an account for docker, [create one](https://docs.docker.com/docker-id/ ).  
-   2. Download/ install [docker for windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows).  
-   3. Run  
-     - After docker is installed, press the windows icon.
-     - Type 'docker'
-     - Select docker for windows
-   4. Login  
+   **If your account does not have a password you need to create a new account with a password.**  
+   1. Click the Windows icon.  
+   2. Select Settings.  
+   3. Click Accounts.  
+   4. Select Family & other people.  
+   5. Click "Add someone else to this PC."  
+   6. Select "I don't have this person's sign-in information."  
+   7. Select "Add a user without a Microsoft account."  
+   8. Enter a username, type the account's password twice, enter a clue and select Next.  
+   9. Login into the user you just created so Windows can do its initial setup.  
+   10. Log back into the account you began the setup with.  
+   11. On the windows toolbar, hidden icons (refer to step 4 for how to find hidden icons), right click docker and select settings.  
+   12. Select shared drives
+   13. Check the box for C drive.  
+   14. This will prompt you to login to the mechine as an admin.  
+   15. The username will be prefilled with {DOMAIN}/{USERNAME} (for example 'adomain-1234/alexander')  
+   16. Replace {USERNAME} with the username of the account you just created.  
+   17. Enter your password into the password box then hit OK.  
 
-     - Once running it will prompt you for a login.  
-     - You can login with your dockerid or the email you created your account with. Use your dockerid (otherwise it will cause issues later).   
-       - If you do not know your dockerid you can find it by logging onto [docker.com](docker.com) and looking in the top right.  
-
-   5. Shared Drives  
-
-    - On the windows toolbar, hidden icons, right click docker and select settings.  
-    - Under shared drives, check the box for C drive.  
-    - This will prompt you to login.  
-    - The username will be prefilled with {DOMAIN}/{USERNAME}  
-    - This requires you to use an account with a password. (for some reason)  
-    **If your account has a password then enter your password in the password box, select OK.**  
-    **If your account does not have a password you need to create a new account with a password.**  
-      - Click the Windows icon.  
-      - Select Settings.  
-      - Click Accounts.  
-      - Select Family & other users.  
-      - Click "Add someone else to this PC."  
-      - Select "I don't have this person's sign-in information."  
-      - Select "Add a user without a Microsoft account."  
-      - Enter a username, type the account's password twice, enter a clue and select Next.  
-      - Once this user is set up go back and replace the {USERNAME} the username of the new account (keep {DOMAIN}).
-      - Enter password, select OK.  
-
-   6. Build  
-
-    - Click the Windows icon.  
-    - Type Powershell, click on Windows Powershell.
-    - Enter this command into the prompt:  
-    - `docker build -t cylc C:\cylc\webscrape\`  
+6. Build  
+   1. press the Windows icon/ Start Menu or the Search Windows button in the bottom left.  
+   2. Type Powershell, click on Windows Powershell.
+   3. Enter this command into the prompt:  
+      `docker build -t cylc C:\cylc\webscrape\`  
 
 ### Run
 
- - Right click webscrape_wrapper.ps1 and select "run with PowerShell".  
- - The powershell window that opens can be closed.  
- - Open any web browser and go to localhost:5800 to confirm it is working.  
+ 1. Right click webscrape_wrapper.ps1 and select "run with PowerShell" (if this is not an option select open).
+ 2. Open any web browser and go to `localhost:5800` to confirm it is working.  
  
 ### Automatic scheduling
 
- - Click Windows icon.
- - type 'task scheduler'.
- - select task scheduler
- - select "Action".
- - select "import task".
- - go to C:\cylc\webscrape\
- - select Start Cylc.xml
- - select OK.
+ 1. Click Windows icon.
+ 2. type 'task scheduler'.
+ 3. select task scheduler
+ 4. select "Action" at the top left.
+ 5. select "import task".
+ 6. Navigate to C:\cylc\webscrape\
+ 7. select Start Cylc.xml
+ 8. select OK.
 
-### Debugging
+## Debugging
+
+Make sure the folders are currect from step one.
 
 On the windows toolbar, hidden icons, right click docker and select Restart.  
 Even if this does not solve the issue it is important to do this while debugging.  
