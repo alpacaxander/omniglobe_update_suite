@@ -63,9 +63,12 @@
 			mv $NEW_DIR/*.jpg $DESTINATION || true
 		"""
 
+    [[DOWNLOAD_RETRY]]
+        [[[job]]]
+            submission retry delays = 6*PT30M
     [[DOWNLOAD_NAVGEM]]
 	[[download<navgem_latest>]]
-		inherit = DOWNLOAD_NAVGEM
+		inherit = DOWNLOAD_NAVGEM, DOWNLOAD_RETRY
             pre-script = """
                 mkdir -p $NEW_DIR
             """
@@ -83,7 +86,7 @@
 			DESTINATION = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_navgem_latest
 
     [[download<10m_zip>]]
-        inherit = DOWNLOAD_NAVGEM
+        inherit = DOWNLOAD_NAVGEM, DOWNLOAD_RETRY
         pre-script = """
             mkdir -p $NEW_DIR
         """
