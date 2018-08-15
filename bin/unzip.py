@@ -32,6 +32,8 @@ def main():
         help='Print more info')
     parser.add_argument('-o', '--output_path', type=str, default='./', nargs='?',
         help='Path to output directory')
+    parser.add_argument('-t', '--retry', type=int, default=8,
+        help='Number of times the request will retry')
     args = parser.parse_args()
 
     if args.verbose == None:
@@ -46,7 +48,7 @@ def main():
     if not os.path.exists(args.output_path):
         os.makedirs(args.output_path)
 
-    scrape_zip(args.input, args.output_path)
+    scrape_zip(args.input, args.output_path, args.retry)
 
 if __name__ == "__main__":
     main()

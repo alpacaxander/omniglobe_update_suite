@@ -15,7 +15,7 @@ from BeautifulSoup import BeautifulSoup
 
 LOG = logging.getLogger(__name__)
 
-def scrape_link(tuple, terminal=10):
+def scrape_link(tuple, retry=0):
     url, args = tuple
     try:
         response = requests.get(url, stream=False, timeout=30)
@@ -27,11 +27,11 @@ def scrape_link(tuple, terminal=10):
         with open(os.path.join(args.output_path, os.path.basename(url)), 'w') as f:
             shutil.copyfileobj(image, f)
     except Exception, e:
-        if terminal is 0:
+        if retry is args.retry:
             LOG.critical(str(e) + " at: " + url)
             return
         else:
-            scrape_link(tuple, terminal=terminal-1)
+            scrape_link(tuple, retry=retry+1)
 
 def get_image_links(url, terminal=10):
     result = [(os.path.join(url, link)) for link in get_links(url) if link[-4:] == ".jpg"]
@@ -95,6 +95,9 @@ def main():
         help='If set will recursively search link')
     parser.add_argument('--replace', nargs='?', const=True, default=False,
         help='If set will not check for duplicates')
+    parser.add_argument('-t', '--terminal', '--retry', type=int, default=8,
+        help='Number of times the request(s) will retry')
+
     args = parser.parse_args()
 
     if args.verbose == None:
