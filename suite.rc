@@ -73,14 +73,12 @@
                 mkdir -p $NEW_DIR
             """
         	script = """
-            	scrape.py -p $processors \
-			    --replace \
-			    --output_path $NEW_DIR \
-			    $url/$CYLC_TASK_PARAM_navgem_latest/latest/ 
+                unzip.py \
+                -o $NEW_DIR \
+                $url
 		    """
 		[[[environment]]]
-			url = https://www.nrlmry.navy.mil/archdat/global/stitched/MoS_2/navgem
-			processors = 4
+			url = https://www.nrlmry.navy.mil/archdat/global/stitched/MoS_2/navgem/$CYLC_TASK_PARAM_navgem_latest/latest.zip
 			NEW_DIR = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_navgem_latest/.new
 			OLD_DIR = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_navgem_latest/.old
 			DESTINATION = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_navgem_latest
