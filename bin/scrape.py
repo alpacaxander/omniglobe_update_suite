@@ -18,9 +18,8 @@ LOG = logging.getLogger(__name__)
 def scrape_link(tuple, retry=0):
     url, args = tuple
     try:
-        response = requests.get(url, stream=False, timeout=30)
+        response = requests.get(url, stream=False, timeout=600)
         if response.headers['content-type'] != 'image/jpeg':
-            print response.headers['content-type']
             raise Exception('Not jpeg')
         image = BytesIO(
             response.content)

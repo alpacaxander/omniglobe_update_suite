@@ -11,9 +11,9 @@ from BeautifulSoup import BeautifulSoup
 
 LOG = logging.getLogger(__name__)
 
-def scrape_zip(zip_url, output_path, retry=10):
+def scrape_zip(zip_url, output_path, retry):
     try:
-        response = requests.get(zip_url, stream=False, timeout=30)
+        response = requests.get(zip_url, stream=False, timeout=600)
         zip_file = BytesIO(response.content)
         zip_ref = zipfile.ZipFile(zip_file, 'r')
         zip_ref.extractall(output_path)
@@ -22,6 +22,7 @@ def scrape_zip(zip_url, output_path, retry=10):
         if retry is 0:
             raise e
         else:
+            LOG.warning(e)
             scrape_zip(zip_url, output_path, retry=retry-1)
 
 def main():
