@@ -18,6 +18,10 @@
     [[special tasks]]
 		clock-expire = update<mos_sub>(PT9H), download<replace>(PT19H)
         clock-trigger = update<mos_sub>(PT8H10M), download<replace>(PT8H) # These offsets are meant to match the website updates plus epsilon
+	[[queues]]
+		[[[downloaders]]]
+			limit = 2
+			members = download<replace>, update<mos_sub>
     [[dependencies]]
 		[[[PT1H]]]
 			graph = """
@@ -27,16 +31,17 @@
 			graph = """ 
 				finished<replace>[-PT12H] => download<replace>
                 download<replace>         => move_old<replace>
-				move_old<replace>         => rename_new<replace>
-				rename_new<replace>       => move_new<replace>
+				move_old<navgem_latest>   => rename_new<navgem_latest>
+				move_old<10m_zip>         => move_new<10m_zip>
+				rename_new<navgem_latest> | rename_new<navgem_latest>:failed => move_new<navgem_latest>
 
-				rename_new<replace>:failed | move_new<replace>:failed     => recover_old<replace>
+				rename_new<navgem_latest>:failed | move_new<replace>:failed     => recover_old<replace>
 				move_new<replace>:succeed  | recover_old<replace>:succeed => clean<replace>
 				download<replace>:expired  | download<replace>:failed | clean<replace> => finished<replace>
 
 				download<replace>:expired | download<replace>:failed => !move_old<replace>
-				download<replace>:expired | download<replace>:failed => !rename_new<replace>
-				download<replace>:expired | download<replace>:failed | rename_new<replace>:failed => !move_new<replace>
+				download<replace>:expired | download<replace>:failed => !rename_new<navgem_latest>
+				download<replace>:expired | download<replace>:failed | rename_new<navgem_latest>:failed => !move_new<replace>
 				download<replace>:expired | download<replace>:failed | move_new<replace> => !recover_old<replace>
 				download<replace>:expired | download<replace>:failed => !clean<replace>
 			"""
@@ -63,12 +68,9 @@
 			mv $NEW_DIR/*.jpg $DESTINATION || true
 		"""
 
-    [[DOWNLOAD_RETRY]]
-        [[[job]]]
-            submission retry delays = 6*PT30M
     [[DOWNLOAD_NAVGEM]]
 	[[download<navgem_latest>]]
-		inherit = DOWNLOAD_NAVGEM, DOWNLOAD_RETRY
+		inherit = DOWNLOAD_NAVGEM
             pre-script = """
                 mkdir -p $NEW_DIR
             """
@@ -82,9 +84,11 @@
 			NEW_DIR = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_navgem_latest/.new
 			OLD_DIR = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_navgem_latest/.old
 			DESTINATION = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_navgem_latest
+        [[[job]]]
+            submission retry delays = 6*PT30M
 
     [[download<10m_zip>]]
-        inherit = DOWNLOAD_NAVGEM, DOWNLOAD_RETRY
+        inherit = DOWNLOAD_NAVGEM
         pre-script = """
             mkdir -p $NEW_DIR
         """
@@ -98,6 +102,8 @@
 			NEW_DIR = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_10m_zip/.new
 			OLD_DIR = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_10m_zip/.old
 			DESTINATION = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_10m_zip
+        [[[job]]]
+            submission retry delays = 6*PT30M
 
 	[[replace_navgem]]
         [[[environment]]]
@@ -113,14 +119,17 @@
 			mv $DESTINATION/*.jpg $OLD_DIR || true
 		"""
 	[[RENAME_NEW_NAVGEM]]
-	[[rename_new<replace>]]
-		inherit = RENAME_NEW_NAVGEM, replace_navgem
+	[[rename_new<navgem_latest>]]
+		inherit = RENAME_NEW_NAVGEM
         	script = """
 			cd $NEW_DIR
 			for file in *_*.jpg; do \
 				mv "$file" "${file%%_*}_${file##*_}" ; \
 			done
 		"""
+		[[[environment]]]
+			NEW_DIR = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_navgem_latest/.new
+
 	[[MOVE_NEW_NAVGEM]]
 	[[move_new<replace>]]
 		inherit = MOVE_NEW_NAVGEM, replace_navgem
