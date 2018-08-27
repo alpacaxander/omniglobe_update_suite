@@ -16,8 +16,8 @@
     initial cycle point = 20180709T00
 	max active cycle points = 10
     [[special tasks]]
-		clock-expire = update<mos_sub>(PT9H), download<replace>(PT19H)
-        clock-trigger = update<mos_sub>(PT8H10M), download<replace>(PT8H) # These offsets are meant to match the website updates plus epsilon
+		clock-expire = update<mos_sub>(PT9H), prep_replace<replace>(PT19H)
+        clock-trigger = update<mos_sub>(PT8H10M), prep_replace<replace>(PT8H) # These offsets are meant to match the website updates plus epsilon
 	[[queues]]
 		[[[downloaders]]]
 			limit = 2
@@ -29,21 +29,21 @@
 			"""
 		[[[T00,T12]]]
 			graph = """ 
-				finished<replace>[-PT12H] => download<replace>
+				clean<replace>[-PT12H]    => prep_replace<replace>
+				prep_replace<replace>     => download<replace>
                 download<replace>         => move_old<replace>
 				move_old<navgem_latest>   => rename_new<navgem_latest>
 				move_old<10m_zip>         => move_new<10m_zip>
 				rename_new<navgem_latest> | rename_new<navgem_latest>:failed => move_new<navgem_latest>
 
 				rename_new<navgem_latest>:failed | move_new<replace>:failed     => recover_old<replace>
-				move_new<replace>:succeed  | recover_old<replace>:succeed => clean<replace>
-				download<replace>:expired  | download<replace>:failed | clean<replace> => finished<replace>
+				prep_replace<replace>:expired | download<replace>:failed | move_new<replace>:succeed  | recover_old<replace>:succeed => clean<replace>
 
-				download<replace>:expired | download<replace>:failed => !move_old<replace>
-				download<replace>:expired | download<replace>:failed => !rename_new<navgem_latest>
-				download<replace>:expired | download<replace>:failed | rename_new<navgem_latest>:failed => !move_new<replace>
-				download<replace>:expired | download<replace>:failed | move_new<replace> => !recover_old<replace>
-				download<replace>:expired | download<replace>:failed => !clean<replace>
+				prep_replace<replace>:expired => !download<replace>
+				prep_replace<replace>:expired | download<replace>:failed => !move_old<replace>
+				prep_replace<replace>:expired | download<replace>:failed => !rename_new<navgem_latest>
+				prep_replace<replace>:expired | download<replace>:failed | rename_new<navgem_latest>:failed => !move_new<replace>
+				prep_replace<replace>:expired | download<replace>:failed | move_new<replace> => !recover_old<replace>
 			"""
 [runtime]
 	[[update_mos]]
@@ -67,13 +67,23 @@
 		post-script = """
 			mv $NEW_DIR/*.jpg $DESTINATION || true
 		"""
+	[[replace_navgem]]
+        [[[environment]]]
+            NEW_DIR = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_replace/.new
+            OLD_DIR = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_replace/.old
+            DESTINATION = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_replace
 
+	[[PREP_REPLACE]]
+	[[prep_replace<replace>]]
+		inherit = PREP_REPLACE, replace_navgem
+		script = """
+            mkdir -p $NEW_DIR
+            mkdir -p $OLD_DIR
+            mkdir -p $DESTINATION
+        """
     [[DOWNLOAD_NAVGEM]]
 	[[download<navgem_latest>]]
 		inherit = DOWNLOAD_NAVGEM
-            pre-script = """
-                mkdir -p $NEW_DIR
-            """
         	script = """
                 unzip.py \
                 -o $NEW_DIR \
@@ -89,9 +99,6 @@
 
     [[download<10m_zip>]]
         inherit = DOWNLOAD_NAVGEM
-        pre-script = """
-            mkdir -p $NEW_DIR
-        """
         script = """
             unzip.py \
             -o $NEW_DIR \
@@ -104,18 +111,11 @@
 			DESTINATION = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_10m_zip
         [[[job]]]
             submission retry delays = 6*PT30M
-
-	[[replace_navgem]]
-        [[[environment]]]
-			NEW_DIR = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_replace/.new
-			OLD_DIR = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_replace/.old
-			DESTINATION = $CYLC_SUITE_DEF_PATH/$CYLC_TASK_PARAM_replace
 			
 	[[MOVE_OLD_NAVGEM]]
 	[[move_old<replace>]]
 		inherit = MOVE_OLD_NAVGEM, replace_navgem
         	script = """
-			mkdir -p $OLD_DIR ; \
 			mv $DESTINATION/*.jpg $OLD_DIR || true
 		"""
 	[[RENAME_NEW_NAVGEM]]
@@ -147,14 +147,11 @@
 		inherit = CLEAN_NAVGEM, replace_navgem
         	script = """
 			if [[ -d $OLD_DIR ]]; then  \
-				rm $OLD_DIR/*.jpg || true ; \
+				rm $OLD_DIR/* || true ; \
 				rmdir $OLD_DIR ; \
 			fi
 			if [[ -d $NEW_DIR ]]; then  \
-				rm $NEW_DIR/*.jpg || true; \
+				rm $NEW_DIR/* || true; \
 				rmdir $NEW_DIR ; \
 			fi
 		"""
-	[[FINISHED_NAVGEM]]
-	[[finished<replace>]]
-		inherit = FINISHED_NAVGEM, replace_navgem
