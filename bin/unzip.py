@@ -13,12 +13,16 @@ LOG = logging.getLogger(__name__)
 
 def scrape_zip(zip_url, output_path, retry):
     try:
-        response = requests.get(zip_url, stream=False, timeout=600)
-        zip_file = BytesIO(response.content)
+        response = requests.get(zip_url, stream=True, timeout=600)
+        with open(os.path.join(output_path, '.temp'), 'wb') as f:
+            for chunk in response.iter_content(chunk_size=1024):
+                if chunk:
+                    f.write(chunk)
+        zip_file = open(os.path.join(output_path, '.temp'), 'rb')
         zip_ref = zipfile.ZipFile(zip_file, 'r')
         zip_ref.extractall(output_path)
         zip_ref.close()
-    except Exception, e:
+    except Exception, e: #TODO not general exception
         if retry is 0:
             raise e
         else:
@@ -33,7 +37,7 @@ def main():
         help='Print more info')
     parser.add_argument('-o', '--output_path', type=str, default='./', nargs='?',
         help='Path to output directory')
-    parser.add_argument('-t', '--retry', type=int, default=8,
+    parser.add_argument('-t', '--retry', type=int, default=2,
         help='Number of times the request will retry')
     args = parser.parse_args()
 
