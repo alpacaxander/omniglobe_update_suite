@@ -147,11 +147,13 @@
 		inherit = CLEAN_NAVGEM, replace_navgem
         	script = """
 			if [[ -d $OLD_DIR ]]; then  \
-				rm $OLD_DIR/* || true ; \
+				rm $OLD_DIR/*.jpg || true ; \
+				rm $OLD_DIR/.temp || true ; \
 				rmdir $OLD_DIR ; \
 			fi
 			if [[ -d $NEW_DIR ]]; then  \
-				rm $NEW_DIR/* || true; \
+				rm $NEW_DIR/*.jpg || true; \
+				rm $NEW_DIR/.temp || true; \
 				rmdir $NEW_DIR ; \
 			fi
 		"""
