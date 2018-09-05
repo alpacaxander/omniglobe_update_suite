@@ -1,3 +1,5 @@
+docker build -t cylc C:\cylc\webscrape\Dockerfolder
+
 $LOCAL_WW = "C:\RT_Contents\RT_NRL_Wind_Waves"
 $DOCKER_WW = "/dockercylc/webscrape/wind_waves"
 $LOCAL_MSLP = "C:\RT_Contents\RT_NRL_mslp"
