@@ -1,6 +1,6 @@
 # omniglobe_update_suite
 
-This app is a one time setup to keep specific folders up to date with NRL images.
+This app is a one time setup to keep specific folders up to date with NRL images. Most of the installation is getting docker running properly.
 
 ## Prerequisites (one time setup)
 
@@ -10,7 +10,7 @@ This app is a one time setup to keep specific folders up to date with NRL images
 **NOTE: Windows doesn't need you to extract the zip file. As long as step 4 is fulfilled**
 2. Right click zip file.
 3. Select Extract All.
-4. Move bin, Dockerfile, Start Cylc.xml, suite.rc, and webscrape_wrapper.ps1 to C:\cylc\webscrape\ (create these folders if necessary)
+4. Move bin, Dockerfolder, Start Cylc.xml, suite.rc, and webscrape_wrapper.ps1 to C:\cylc\webscrape\ (create any folders if necessary)
 
 ### Docker  
 1. If you do not have an account for docker, [create one](https://docs.docker.com/docker-id/ ).  
@@ -62,12 +62,6 @@ This app is a one time setup to keep specific folders up to date with NRL images
    16. Replace {USERNAME} with the username of the account you just created.  
    17. Enter your password into the password box then hit OK.  
 
-6. Build  
-   1. press the Windows icon/ Start Menu or the Search Windows button in the bottom left.  
-   2. Type Powershell, click on Windows Powershell.
-   3. Enter this command into the prompt:  
-      `docker build -t cylc C:\cylc\webscrape\`  
-
 ### Run
 
  1. Right click webscrape_wrapper.ps1 and select "run with PowerShell" (if this is not an option select open).
@@ -85,8 +79,6 @@ This app is a one time setup to keep specific folders up to date with NRL images
  8. select OK.
 
 ## Debugging
-
-Make sure the folders are currect from step one.
 
 On the windows toolbar, hidden icons, right click docker and select Restart.  
 Even if this does not solve the issue it is important to do this while debugging.  
