@@ -20,7 +20,7 @@
         clock-trigger = update<mos_sub>(PT8H10M), prep_replace<replace>(PT8H) # These offsets are meant to match the website updates plus epsilon
 	[[queues]]
 		[[[downloaders]]]
-			limit = 2
+			limit = 4
 			members = download<replace>, update<mos_sub>
     [[dependencies]]
 		[[[PT1H]]]
